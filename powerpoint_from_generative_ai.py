@@ -14,11 +14,11 @@ from openai import OpenAI
 import google.generativeai as genai
 from api_settings import safety_settings
 
-secretkey=os.getenv("secretkey")
-api_key=os.getenv("api_key")
+chat_gpt_key=os.getenv("chat_gpt_key")
+gemini_key=os.getenv("gemini_key")
 
-client = OpenAI(api_key=secretkey)
-genai.configure(api_key=api_key)
+client = OpenAI(api_key=chat_gpt_key)
+genai.configure(api_key=gemini_key)
 
 #Ais can either be chatgpt or gemini
 ais=[]
@@ -80,7 +80,7 @@ def get_answer_from_chatgpt(question):
     """
 
     completion = client.chat.completions.create(
-    model="gpt-3.5-turbo",
+    model="gpt-4o-mini",
     messages=[
         {"role": "system", "content": system_prompt},
         {"role": "user", "content": question}
