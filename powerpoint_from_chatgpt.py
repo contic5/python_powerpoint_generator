@@ -11,8 +11,8 @@ from pptx.util import Inches
 from collections import defaultdict
 from openai import OpenAI
 
-secretkey=os.getenv("secretkey")
-client = OpenAI(api_key=secretkey)
+chat_gpt_key=os.getenv("chat_gpt_key")
+client = OpenAI(api_key=chat_gpt_key)
 
 question_file_name="goal_setting"
 def add_bullet_slide(prs,question_dict):
@@ -69,7 +69,7 @@ def get_answer_from_chatgpt(question):
     """
 
     completion = client.chat.completions.create(
-    model="gpt-3.5-turbo",
+    model="gpt-4o-mini",
     messages=[
         {"role": "system", "content": system_prompt},
         {"role": "user", "content": question}
